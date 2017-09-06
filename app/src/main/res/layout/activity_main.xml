@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.admin.dataokhttp.com.app.view.MainActivity">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +17,42 @@
     <Button
         android:id="@+id/btn"
         android:layout_width="match_parent"
-        android:text="请求"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:text="请求" />
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="AppCompatButton"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Button"
+        />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:hint="测试AppCompatEditText"
+        android:textSize="12sp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxLines="1"
+        android:inputType="text"
+        android:focusable="false"
+        android:background="@android:color/transparent"
+        android:layout_height="30dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:hint="测试safkasklfjaslkdfjsalkdfjaskdlfjsafklasjflkasjflaskfjaslkfjaslfkasjflkasjfalskfjaslfkEditText"
+        android:ellipsize="end"
+        android:textSize="12sp"
+        android:lines="1"
+        android:focusable="false"
+        android:maxLines="1"
+        android:inputType="text"
+        android:layout_height="50dp"  />
+
+</LinearLayout>

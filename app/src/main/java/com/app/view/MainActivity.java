@@ -10,6 +10,9 @@ import com.dodata.appnet.user.UserPresenterImpl;
 import com.dodata.net.presenter.SucceedCallback;
 import com.example.admin.dataokhttp.R;
 
+/**
+ * 入口测试
+ */
 public class MainActivity extends BaseTitleActivity {
 
     UserPresenterImpl presenter;

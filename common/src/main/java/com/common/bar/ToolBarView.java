@@ -17,7 +17,7 @@ import com.common.R;
  * 作者：wangdakuan
  * 日期：2017/9/4 13:05
  * 邮箱：wangdakuan@kjtpay.com.cn
- * 功能：
+ * 功能：标题栏控件
  */
 public class ToolBarView extends Toolbar {
 

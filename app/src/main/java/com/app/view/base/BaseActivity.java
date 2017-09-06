@@ -16,7 +16,7 @@ import com.common.pageloading.PageStateLayout;
  * 邮箱：wangdakuan@kjtpay.com.cn
  * 功能：activity 基类
  */
-public abstract class BaseActivity extends AppCompatActivity implements IBaseView, View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements IBaseView{
     /**
      * 当前Activity渲染的视图View
      */

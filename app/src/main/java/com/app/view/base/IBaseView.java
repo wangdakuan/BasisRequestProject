@@ -7,7 +7,7 @@ import android.view.View;
  * 作者：wangdakuan
  * 日期：2017/9/4 10:26
  * 邮箱：wangdakuan@kjtpay.com.cn
- * 功能：
+ * 功能：页面相关规定方法（统一管理）
  */
 interface IBaseView extends View.OnClickListener {
 

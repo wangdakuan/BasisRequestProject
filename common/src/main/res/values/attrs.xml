@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MaterialProgress">
+        <attr name="mp_startColor" format="color" />
+        <attr name="mp_midColor" format="color" />
+        <attr name="mp_endColor" format="color" />
+        <attr name="mp_radius" format="dimension" />
+        <attr name="mp_strokeWidth" format="dimension" />
+        <attr name="mp_speed" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="RippleView">
+        <attr name="rv_alpha" format="integer" />
+        <attr name="rv_framerate" format="integer" />
+        <attr name="rv_rippleDuration" format="integer" />
+        <attr name="rv_zoomDuration" format="integer" />
+        <attr name="rv_color" format="color" />
+        <attr name="rv_centered" format="boolean" />
+        <attr name="rv_type" format="enum">
+            <enum name="simpleRipple" value="0" />
+            <enum name="doubleRipple" value="1" />
+            <enum name="rectangle" value="2" />
+        </attr>
+        <attr name="rv_ripplePadding" format="dimension" />
+        <attr name="rv_zoom" format="boolean" />
+        <attr name="rv_zoomScale" format="float" />
+
+    </declare-styleable>
+
+    <declare-styleable name="ToolBarView">
+        <!--左边返回图片-->
+        <attr name="imgBack" format="integer" />
+        <!--中间标题-->
+        <attr name="textTitle" format="string" />
+        <!--右边文字-->
+        <attr name="rightText" format="string" />
+        <!--右边文字颜色-->
+        <attr name="rightTextColor" format="color" />
+        <!--右边文字字体大小-->
+        <attr name="rightTextSize" format="dimension" />
+        <!--右边图片-->
+        <attr name="rightImg" format="integer" />
+        <!--右边是否使用图片 默认为不使用 false-->
+        <attr name="isShowRightPic" format="boolean" />
+        <!--右边控件是否显示 默认为不显示 false-->
+        <attr name="isShowRight" format="boolean" />
+        <!--左边控件是否显示 默认为显示 true-->
+        <attr name="isShowLeft" format="boolean" />
+    </declare-styleable>
+</resources>

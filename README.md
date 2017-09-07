@@ -34,7 +34,7 @@
 * BasePresenterIml 这个类是Presenter的基类，这里实现RequestCallback、ViewPresenter接口
 * BaseUrl 这个类是请求url，根据自己项目修改
 * UserUrl 这个类是请求url，根据自己项目修改
-###### 包名什么的都可以按照自己想法来，随自己心意来就好，开开心心敲码才好（`_`）
+###### 包名什么的都可以按照自己想法来，随自己心意来就好，开开心心敲码才好（^_^）
 ```
 
 ### common层：

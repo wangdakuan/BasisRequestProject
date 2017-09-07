@@ -2,25 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bar="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/view_title"
+    <com.common.bar.ToolBarView
+        android:id="@+id/toolbar_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent">
-
-        <com.common.bar.ToolBarView
-            android:id="@+id/toolbar_view"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            bar:textTitle="测试" />
-    </FrameLayout>
-
-
-    <FrameLayout
-        android:id="@+id/activity_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="50dp"
+        bar:textTitle="测试" />
 </LinearLayout>

@@ -64,7 +64,7 @@ public class DialogBuilder extends BaseDialog {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
-            convertListener = (ViewConvertListener) savedInstanceState.getSerializable("listener");
+//            convertListener = (ViewConvertListener) savedInstanceState.getSerializable("listener");
         }
     }
 
@@ -76,6 +76,6 @@ public class DialogBuilder extends BaseDialog {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable("listener", convertListener);
+//        outState.putSerializable("listener", convertListener);
     }
 }

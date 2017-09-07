@@ -1,9 +1,12 @@
 package com.dodata.appnet;
 
+import com.common.dialog.BaseDialog;
+import com.common.dialog.DialogBuilder;
 import com.common.pageloading.PageStateListener;
 import com.common.utils.ToastUtils;
 import com.dodata.net.presenter.RequestCallback;
 import com.dodata.net.presenter.ViewPresenter;
+import com.example.dodata.R;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -25,6 +28,8 @@ public class BasePresenterIml implements ViewPresenter, RequestCallback {
     private CompositeDisposable compositeDisposable;
 
     private boolean isCancelLoad; //请求时取消加载框  true 为取消，false为显示
+
+    private BaseDialog baseDialog;
 
     /**
      * 统计请求的订阅者
@@ -52,6 +57,8 @@ public class BasePresenterIml implements ViewPresenter, RequestCallback {
      */
     public BasePresenterIml(PageStateListener stateListener) {
         mStateListener = stateListener;
+        baseDialog = DialogBuilder.init().setLayoutId(R.layout.loading_layout)
+                .setDimAmount(1.0f);
     }
 
     @Override
@@ -71,11 +78,8 @@ public class BasePresenterIml implements ViewPresenter, RequestCallback {
      */
     @Override
     public void onStart() {
-//        if(){
-//            mStateListener.onRequesting();
-//        }
         if (null != mStateListener && !isCancelLoad) {
-            mStateListener.onLoading();
+//            mStateListener.onLoading();
             mStateListener.onRequesting();
         }
     }
@@ -103,6 +107,7 @@ public class BasePresenterIml implements ViewPresenter, RequestCallback {
         if (null != mStateListener) {
             ToastUtils.showShortSafe(message);
             mStateListener.onError();
+            baseDialog.dismiss();
         }
     }
 

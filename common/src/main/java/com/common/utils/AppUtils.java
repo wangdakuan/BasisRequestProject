@@ -80,6 +80,8 @@ public final class AppUtils {
     public static void init(@NonNull final Application app) {
         AppUtils.sApplication = app;
         app.registerActivityLifecycleCallbacks(mCallbacks);
+        LogUtils.getConfig().setGlobalTag("测试");
+        CrashUtils.init();
     }
 
     /**

@@ -5,7 +5,9 @@ import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.LinearLayout;
 
 import com.common.bar.UltimateBar;
 import com.common.pageloading.PageStateLayout;
@@ -16,11 +18,15 @@ import com.common.pageloading.PageStateLayout;
  * 邮箱：wangdakuan@kjtpay.com.cn
  * 功能：activity 基类
  */
-public abstract class BaseActivity extends AppCompatActivity implements IBaseView{
+public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     /**
      * 当前Activity渲染的视图View
      */
     protected View contentView;
+    /**
+     * 标题视图view
+     */
+    protected View titleView;
     /**
      * 上次点击时间
      */
@@ -30,6 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected UltimateBar mUltimateBar;
 
     protected PageStateLayout mLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +51,14 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         initData(bundle);
         initPageState();
         /**
+         * 设置标题布局
+         */
+        setTitleView(0);
+        /**
          * 初始化绑定总布局
          */
         setBaseView(bindLayout());
+
         /**
          * 初始化控件方法
          */
@@ -57,15 +69,44 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         doBusiness();
     }
 
-    private void initPageState(){
+    private void initPageState() {
         mLayout = new PageStateLayout(this);
         mLayout.setOnEmptyListener(null)
                 .setOnErrorListener(null);
     }
 
+    /**
+     * 标题布局
+     */
+    protected void setTitleView(@LayoutRes int layoutId) {
+        if (0 != layoutId) {
+            titleView = LayoutInflater.from(this).inflate(layoutId, null);
+            mUltimateBar.addMarginTopEqualStatusBarHeight(titleView, this);
+        }
+    }
+
+    /**
+     * 页面布局
+     *
+     * @param layoutId
+     */
     protected void setBaseView(@LayoutRes int layoutId) {
-        setContentView(contentView = LayoutInflater.from(this).inflate(layoutId, null));
-        mUltimateBar.addMarginTopEqualStatusBarHeight(contentView, this);
+        LinearLayout layout = new LinearLayout(this);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        if (0 != layoutId) {
+            contentView = LayoutInflater.from(this).inflate(layoutId, null);
+            mLayout.load(layout, contentView);
+            mLayout.onSucceed();
+        }
+        if (titleView != null) {
+            layout.addView(titleView, 0);
+        } else {
+            if(null != contentView){
+                mUltimateBar.addMarginTopEqualStatusBarHeight(contentView, this);
+            }
+        }
+        setContentView(layout, layoutParams);
     }
 
     /**

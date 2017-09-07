@@ -44,6 +44,9 @@ public class ToolBarView extends Toolbar {
         super(context);
         this.context = context;
         inflater = LayoutInflater.from(context);
+        setContentInsetStartWithNavigation(0);
+        setContentInsetsAbsolute(0, 0);
+        setContentInsetsRelative(0, 0);
     }
 
     public ToolBarView(Context context, @Nullable AttributeSet attrs) {
@@ -66,6 +69,12 @@ public class ToolBarView extends Toolbar {
      * @param attrs
      */
     private void init(AttributeSet attrs) {
+        /**
+         * 取消默认间距
+         */
+        setContentInsetStartWithNavigation(0);
+        setContentInsetsAbsolute(0, 0);
+        setContentInsetsRelative(0, 0);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ToolBarView);
         try {
             mImgBack = a.getInteger(R.styleable.ToolBarView_imgBack, R.mipmap.nav_back);
@@ -202,6 +211,42 @@ public class ToolBarView extends Toolbar {
      */
     public ToolBarView setIsShowLeft(boolean mIsShowLeft) {
         this.mIsShowLeft = mIsShowLeft;
+        return this;
+    }
+
+    /**
+     * 返回按钮监听
+     * @param listener
+     * @return
+     */
+    public ToolBarView setImagBackListener(View.OnClickListener listener){
+        if(null != mImagBack){
+            mImagBack.setOnClickListener(listener);
+        }
+        return this;
+    }
+
+    /**
+     * 右边文字按钮监听
+     * @param listener
+     * @return
+     */
+    public ToolBarView setTvRightListener(View.OnClickListener listener){
+        if(null != mTvRight){
+            mTvRight.setOnClickListener(listener);
+        }
+        return this;
+    }
+
+    /**
+     * 右边图片按钮监听
+     * @param listener
+     * @return
+     */
+    public ToolBarView setImgRightListener(View.OnClickListener listener){
+        if(null != mImgRight){
+            mImgRight.setOnClickListener(listener);
+        }
         return this;
     }
 

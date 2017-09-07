@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.Iterator;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * 邮箱：wangdakuan@kjtpay.com.cn
  * 功能：Activity相关帮助类
  */
-public class ActivityUtils {
+public final class ActivityUtils {
 
     private ActivityUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
@@ -26,8 +27,8 @@ public class ActivityUtils {
      *
      * @return 栈顶Activity
      */
-    public static Activity getTopActivity() {
-        return AppUtils.sTopActivity;
+    public static AppCompatActivity getTopActivity() {
+        return (AppCompatActivity) AppUtils.sTopActivity;
     }
 
 
@@ -36,7 +37,7 @@ public class ActivityUtils {
      *
      * @param targetActivity 需要启动的页面
      */
-    public void navigateTo(@NonNull Class<? extends Activity> targetActivity) {
+    public static void navigateTo(@NonNull Class<? extends Activity> targetActivity) {
         navigateTo(targetActivity, new Intent());
     }
 
@@ -46,7 +47,7 @@ public class ActivityUtils {
      * @param targetActivity 需要启动的页面
      * @param extras         页面传值对象
      */
-    public void navigateTo(@NonNull Class<? extends Activity> targetActivity, @NonNull Bundle extras) {
+    public static void navigateTo(@NonNull Class<? extends Activity> targetActivity, @NonNull Bundle extras) {
         Intent intent = new Intent();
         intent.putExtras(extras);
         navigateTo(targetActivity, intent);
@@ -59,7 +60,7 @@ public class ActivityUtils {
      * @param extras         页面传值对象
      * @param requestCode    请求回调码
      */
-    public void navigateTo(@NonNull Class<? extends Activity> targetActivity, @NonNull Bundle extras, int requestCode) {
+    public static void navigateTo(@NonNull Class<? extends Activity> targetActivity, @NonNull Bundle extras, int requestCode) {
         Intent intent = new Intent();
         intent.putExtras(extras);
         navigateTo(targetActivity, intent, requestCode);
@@ -71,7 +72,7 @@ public class ActivityUtils {
      * @param targetActivity 启动的页面
      * @param requestCode    请求回调码
      */
-    public void navigateTo(@NonNull Class<? extends Activity> targetActivity, int requestCode) {
+    public static void navigateTo(@NonNull Class<? extends Activity> targetActivity, int requestCode) {
         navigateTo(targetActivity, new Intent(), requestCode);
     }
 
@@ -81,7 +82,7 @@ public class ActivityUtils {
      * @param targetActivity 需要启动的页面
      * @param intent         Intent 对象
      */
-    public void navigateTo(@NonNull Class<? extends Activity> targetActivity, @NonNull Intent intent) {
+    public static void navigateTo(@NonNull Class<? extends Activity> targetActivity, @NonNull Intent intent) {
         Activity currentActivity = getTopActivity();
         navigateTo(currentActivity, targetActivity, intent, -1);
     }
@@ -93,7 +94,7 @@ public class ActivityUtils {
      * @param intent         Intent 对象
      * @param requestCode    请求回调码
      */
-    public void navigateTo(@NonNull Class<? extends Activity> targetActivity, @NonNull Intent intent, int requestCode) {
+    public static void navigateTo(@NonNull Class<? extends Activity> targetActivity, @NonNull Intent intent, int requestCode) {
         Activity currentActivity = getTopActivity();
         navigateTo(currentActivity, targetActivity, intent, requestCode);
     }
@@ -106,7 +107,7 @@ public class ActivityUtils {
      * @param intent         跳转Intent对象
      * @param requestCode    请求回调码
      */
-    public void navigateTo(@NonNull Activity context, @NonNull Class<? extends Activity> targetActivity, @NonNull Intent intent, int requestCode) {
+    public static void navigateTo(@NonNull Activity context, @NonNull Class<? extends Activity> targetActivity, @NonNull Intent intent, int requestCode) {
         intent.setClass(context, targetActivity);
         context.startActivityForResult(intent, requestCode);
     }
@@ -133,7 +134,7 @@ public class ActivityUtils {
      *
      * @param classes 销毁指定页面
      */
-    public void removerActivity(Class... classes) {
+    public static void removerActivity(Class... classes) {
         Iterator<Activity> sListIterator = AppUtils.sActivityList.iterator();
         while (sListIterator.hasNext()) {
             Activity act = sListIterator.next();
